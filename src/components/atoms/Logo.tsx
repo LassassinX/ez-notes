@@ -1,7 +1,7 @@
 import LibraryBooksIcon from '@mui/icons-material/LibraryBooks';
 
 
-export default () => {
+export default function Logo() {
 	return <>
 		<div>
 			<LibraryBooksIcon className="text-primary text-2xl mr-2" />

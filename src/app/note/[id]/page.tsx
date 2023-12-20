@@ -3,7 +3,7 @@ import NoteWritingBoard from "@/components/templates/NoteWritingBoard"
 // back button mui icon
 import ArrowBackIosNew from '@mui/icons-material/ArrowBackIosNew';
 
-export default () => {
+export default function Page() {
 	return (
 		<Container className="grow flex flex-col items-start gap-0">
 			<div className="join items-center rounded-lg bg-primary-content bg-opacity-50
