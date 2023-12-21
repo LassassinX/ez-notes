@@ -1,18 +1,38 @@
-import Container from "@/components/atoms/Container"
-import NoteWritingBoard from "@/components/templates/NoteWritingBoard"
-// back button mui icon
-import ArrowBackIosNew from '@mui/icons-material/ArrowBackIosNew';
+"use client";
+import { useRouter, notFound } from "next/navigation"
 
-export default function Page() {
+import { useEffect, useState } from "react";
+import Loader from "@/components/atoms/Loader";
+import NoteWritingPage from "./components/NoteWritingPage";
+
+
+export default function Page({ params }: {
+	params: {
+		id: string
+	}
+}) {
+	const { id } = params
+	const [note, setNote] = useState(undefined as Note | undefined | false); // Use undefined as initial state
+	const router = useRouter();
+
+	useEffect(() => {
+		// check if the browser's local storage contains this note
+		if (localStorage.getItem('notes')) {
+			const notes = JSON.parse(localStorage.getItem('notes') || '')
+			const note = notes.find((note: any) => note.id === id)
+
+			setNote(note); // Set noteFound based on whether the note is found or not
+		} else {
+			setNote(false);
+		}
+	}, [id, router]);
+
+	// Render loading state while checking
+	if (note === undefined) {
+		return <Loader />;
+	}
+
 	return (
-		<Container className="grow flex flex-col items-start gap-0">
-			<div className="join items-center rounded-lg bg-primary-content bg-opacity-50
-				[&>*:hover]:brightness-110 [&>*:hover]:cursor-pointer [&>*]:transition-all
-			">
-				<ArrowBackIosNew className="join-item ml-2 text-primary" />
-				<h1 className="join-item text-lg text-primary font-bold p-4 pl-2">Untitled Note 1</h1>
-			</div>
-			<NoteWritingBoard />
-		</Container>
+		note ? <NoteWritingPage note={note} /> : notFound() // Render the note page if found, otherwise render 404
 	)
 }

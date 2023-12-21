@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
 import NavBar from '@/components/templates/NavBar'
+import Footer from '@/components/templates/Footer'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -15,11 +16,14 @@ export default function RootLayout({
 }: {
 	children: React.ReactNode
 }) {
-	return (
+	return ( 
 		<html lang="en">
 			<body className={`${inter.className} min-h-[100svh] flex flex-col`} data-theme="night">
-				<NavBar /> 
-				{children}
+				<NavBar />
+				<div className='grow flex flex-col'>
+					{children}
+				</div>
+				<Footer />
 			</body>
 		</html>
 	)

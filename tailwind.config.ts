@@ -24,12 +24,20 @@ const config: Config = {
 					'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
 			},
 
+			minWidth: {
+				'noteCardWidth': '180px',
+			},
+
 			width: { 
 				'noteCardWidth': '180px',
 			},
 
+			minHeight:{
+				'noteCardHeight': '240px',
+			},
+
 			height: {
-				'noteCardHeight': '220px',
+				'noteCardHeight': '240px',
 			},
 		},
 	},
