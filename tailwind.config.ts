@@ -25,15 +25,11 @@ const config: Config = {
 			},
 
 			minWidth: {
-				'noteCardWidth': '180px',
+				'noteCardWidth': '140px',
 			},
 
-			width: { 
+			maxWidth: { 
 				'noteCardWidth': '180px',
-			},
-
-			minHeight:{
-				'noteCardHeight': '240px',
 			},
 
 			height: {

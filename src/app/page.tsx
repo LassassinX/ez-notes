@@ -52,8 +52,10 @@ export default function Home() {
 	}
 	
 
+
+
 	return <>
-		<Container className='flex-wrap'>
+		<Container className='grid grid-cols-[repeat(auto-fill,minmax(180px,1fr))]'>
 			<CreateNoteCard onClick={handleNoteCreate} />
 
 			

@@ -27,12 +27,12 @@ export default function NoteCard({
 	}
 
 	return (
-		<div className='relative group hover:-translate-y-1 transition duration-300 ease-in-out cursor-pointer '>
+		<div className='grow relative group hover:-translate-y-1 transition duration-300 ease-in-out cursor-pointer '>
 			<CrossIcon className='text-error text-xl p-1 font-bold absolute z-20 opacity-0 -top-4 -right-4 w-8 h-8 bg-white rounded-full group-hover:opacity-100 transition-all' onClick={()=>{
 				handleNoteDelete(id)
 			}} />
 			<Link href={`/note/${id}`}>
-				<div className="w-noteCardWidth h-noteCardHeight flex flex-col items-stretch justify-center gap-6 rounded-lg p-4 shadow-md select-none
+				<div className="h-noteCardHeight flex flex-col items-stretch justify-center gap-6 rounded-lg p-4 shadow-md select-none
 		hover:bg-primary hover:bg-opacity-10 transition duration-300 ease-in-out cursor-pointer 
 		" style={Object.assign({}, style, hoverStyle)}>
 					<p className="text-white w-full bg-black opacity-75 text-center p-2 rounded-lg">

@@ -5,7 +5,7 @@ export default function Footer() {
 	return (
 		<footer className="footer footer-center bg-base-300 text-base-content">
 			<Container className='py-4 bg-base-300 text-base-content w-full'>
-				<aside className="flex grow">
+				<aside className="flex grow flex-col sm:flex-row sm:gap-0 gap-2 items-center sm:items-stretch">
 					<p className='grow text-start'>
 						Made by <a href="https://www.github.com/LassassinX" className="text-primary">@SanjidIslamChowdhury</a> with 💖
 					</p>
