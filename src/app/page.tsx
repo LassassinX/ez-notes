@@ -50,14 +50,12 @@ export default function Home() {
 		// update the state 
 		setNotes(newNotes)
 	}
-	
 
 
 
 	return <>
 		<Container className='grid grid-cols-[repeat(auto-fill,minmax(180px,1fr))]'>
 			<CreateNoteCard onClick={handleNoteCreate} />
-
 			
 			{
 				<Suspense fallback={<div>Loading...</div>}>
