@@ -10,7 +10,12 @@ import Container from '@/components/atoms/Container'
 import { getRandomColor } from '@/utils/colors'
 import { deleteNoteFromLocalStorage } from '@/utils/functions'
 
+// auth
+import { useSession } from 'next-auth/react'
+
 export default function Home() {
+	const { data: session, status } = useSession()
+	console.log(session, status)
 	const [notes, setNotes] = useState([] as any)
 	const { push } = useRouter()
 

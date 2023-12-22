@@ -1,7 +1,7 @@
 "use client"
 import { useSession } from "next-auth/react"
 
-function page() {
+function Page() {
 	const { data: session, status } = useSession()
 
 	if (status === 'loading') {
@@ -17,4 +17,4 @@ function page() {
 	)
 }
 
-export default page
+export default Page
