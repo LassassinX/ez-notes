@@ -19,7 +19,6 @@ export default function NoteWritingBoard({ note, setNote, savingState }: {
 	savingState: (state: boolean) => void
 }) {
 	const editDivRef = useRef<HTMLDivElement>(null)
-	const popupRef = useRef<PopupInstance>(null)
 	const x = useRef(0)
 	const y = useRef(0)
 
@@ -33,7 +32,7 @@ export default function NoteWritingBoard({ note, setNote, savingState }: {
 			editDivRef.current.innerText = note.content
 			editDivRef.current.focus()
 		}
-	}, [])
+	}, [editDivRef.current])
 
 	useEffect(() => {
 		const selection = window.getSelection()
@@ -95,49 +94,3 @@ export default function NoteWritingBoard({ note, setNote, savingState }: {
 		</div>
 	)
 }
-
-const SavePopup = forwardRef(({ x, y }: { x: number, y: number, }, ref) => {
-	const [show, setShow] = useState(false)
-
-	const divRef = useRef<HTMLDivElement>(null)
-	const animeRef = useRef<any>(null)
-
-	if (!ref) ref = useRef<PopupInstance>(null)
-
-	useEffect(() => {
-		if (show) {
-			if (animeRef.current) animeRef.current.pause()
-			divRef.current?.setAttribute('style', 'opacity: 1;')
-
-			animeRef.current = anime({
-				targets: divRef?.current,
-				opacity: 0,
-				duration: 800,
-				top: '-=10px',
-				easing: 'easeInOutQuad',
-				complete: () => {
-					// put the animation back to the original state
-					setShow(false)
-					animeRef.current?.seek(0)
-					divRef.current?.setAttribute('style', '')
-				}
-			})
-		}
-	}, [show])
-
-	useImperativeHandle(ref, () => {
-		return {
-			show: () => setShow(true),
-		}
-	})
-
-	return ReactDOM.createPortal(
-		<div className="absolute z-[100] bg-neutral shadow-lg rounded-box p-2 pointer-events-none select-none opacity-0" ref={divRef}
-			style={{
-				top: y,
-				left: x,
-			}}>
-			saved
-		</div>
-		, document.body)
-})
