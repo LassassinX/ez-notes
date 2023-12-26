@@ -21,7 +21,7 @@ export default function RootLayout({
 	
 	return (
 		<html lang="en">
-			<body className={`${inter.className} min-h-[100svh] flex flex-col`} data-theme="forest">
+			<body className={`${inter.className} min-h-[100svh] flex flex-col`} data-theme="night">
 				<Provider>
 					<NavBar />
 					<div className='grow flex flex-col'>
