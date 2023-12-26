@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
+import NextTopLoader from 'nextjs-toploader';
 
 import NavBar from '@/components/templates/NavBar'
 import Footer from '@/components/templates/Footer'
@@ -18,10 +19,11 @@ export default function RootLayout({
 }: {
 	children: React.ReactNode,
 }) {
-	
+
 	return (
 		<html lang="en">
 			<body className={`${inter.className} min-h-[100svh] flex flex-col`} data-theme="night">
+				<NextTopLoader />
 				<Provider>
 					<NavBar />
 					<div className='grow flex flex-col'>

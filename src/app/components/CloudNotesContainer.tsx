@@ -47,6 +47,7 @@ export default function CloudNotesContainer() {
 		// update the state
 		setNotes([...notes, newNote])
 
+		
 
 		// redirect to the new note
 		push(`/cloud/notes/${newNote.id}`)
