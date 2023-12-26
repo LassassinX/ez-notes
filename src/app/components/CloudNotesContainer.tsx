@@ -13,7 +13,7 @@ import ComponentLoader from '@/components/atoms/ComponentLoader'
 import Notes from './Notes'
 
 export default function CloudNotesContainer() {
-	const [notes, setNotes] = useState([] as any)
+	const [notes, setNotes] = useState(undefined as Note[] | undefined)
 	const { data: session, status } = useSession()
 	const { push } = useRouter()
 
@@ -29,6 +29,7 @@ export default function CloudNotesContainer() {
 	}, [status])
 
 	const handleNoteCreate = async () => {
+		if (notes === undefined) return
 		// create a new note
 		const newNote: Note = {
 			id: uniqid(),
@@ -57,6 +58,8 @@ export default function CloudNotesContainer() {
 
 	const handleNoteDelete = async (id: string) => {
 		// delete the note
+		if (notes === undefined) return
+
 		const newNotes = notes.filter((note: any) => note.id !== id)
 
 		// add note to db
@@ -75,7 +78,7 @@ export default function CloudNotesContainer() {
 			<Container className='grid grid-cols-[repeat(auto-fill,minmax(180px,1fr))] !p-0'>
 				<CreateNoteCard onClick={handleNoteCreate}>Create Cloud Note</CreateNoteCard>
 				{
-					notes.length === 0 ? <div className='flex items-center justify-center'><ComponentLoader /></div> :
+					notes === undefined ? <div className='flex items-center justify-center'><ComponentLoader /></div> :
 					<Notes handleNoteDelete={handleNoteDelete} handleNoteOnClick={handleNoteOnClick} notes={notes} />
 				}
 			</Container>
