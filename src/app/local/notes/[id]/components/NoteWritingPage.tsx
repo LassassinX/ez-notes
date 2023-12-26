@@ -1,6 +1,8 @@
-import NoteWritingBoard from "@/components/templates/NoteWritingBoard"
-import NoteTitle from "@/components/templates/NoteTitle"
+import NoteWritingBoard from "./NoteWritingBoard"
+import NoteTitle from "./NoteTitle"
+
 import Container from "@/components/atoms/Container"
+import { Note } from "@/utils/types"
 
 
 export default function NoteWritingPage({ note }: {

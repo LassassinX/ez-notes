@@ -4,14 +4,43 @@ const config: Config = {
 
 	// daisy
 	daisyui: {
+		// all themes
 		themes: [
-			'light', // first one will be the default theme
-			'dark',
-			'night'
+			"light",
+			"dark",
+			"cupcake",
+			"bumblebee",
+			"emerald",
+			"corporate",
+			"synthwave",
+			"retro",
+			"cyberpunk",
+			"valentine",
+			"halloween",
+			"garden",
+			"forest",
+			"aqua",
+			"lofi",
+			"pastel",
+			"fantasy",
+			"wireframe",
+			"black",
+			"luxury",
+			"dracula",
+			"cmyk",
+			"autumn",
+			"business",
+			"acid",
+			"lemonade",
+			"night",
+			"coffee",
+			"winter",
+			"dim",
+			"nord",
+			"sunset",
 		],
 	},
-
-	content: [
+		content: [
 		'./src/pages/**/*.{js,ts,jsx,tsx,mdx}',
 		'./src/components/**/*.{js,ts,jsx,tsx,mdx}',
 		'./src/app/**/*.{js,ts,jsx,tsx,mdx}',
@@ -28,7 +57,7 @@ const config: Config = {
 				'noteCardWidth': '140px',
 			},
 
-			maxWidth: { 
+			maxWidth: {
 				'noteCardWidth': '180px',
 			},
 

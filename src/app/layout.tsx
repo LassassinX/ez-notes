@@ -18,9 +18,10 @@ export default function RootLayout({
 }: {
 	children: React.ReactNode,
 }) {
+	
 	return (
 		<html lang="en">
-			<body className={`${inter.className} min-h-[100svh] flex flex-col`} data-theme="night">
+			<body className={`${inter.className} min-h-[100svh] flex flex-col`} data-theme="forest">
 				<Provider>
 					<NavBar />
 					<div className='grow flex flex-col'>

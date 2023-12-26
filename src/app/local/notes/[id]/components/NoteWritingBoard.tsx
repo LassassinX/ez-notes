@@ -1,5 +1,6 @@
 "use client"
 import { getNoteFromLocalStorage, saveNotesToLocalStorage } from "@/utils/functions"
+import { Note } from "@/utils/types"
 import { SyntheticEvent, useEffect, useRef, useState } from "react"
 
 export default function NoteWritingBoard({ note }: {

@@ -8,6 +8,7 @@ import CrossIcon from '@mui/icons-material/Close';
 
 import Link from "next/link"
 import { useState, useRef, useEffect } from "react"
+import { Note } from "@/utils/types";
 
 export default function NoteTitle({ note }: {
 	note: Note

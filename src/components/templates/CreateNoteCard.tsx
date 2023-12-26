@@ -2,8 +2,9 @@
 import AddIcon from '@mui/icons-material/Add';
 import { SyntheticEvent } from 'react';
 
-export default function CreateNoteCard({onClick: onClickHandler}: {
-	onClick: (e: SyntheticEvent) => void
+export default function CreateNoteCard({onClick: onClickHandler, children}: {
+	onClick: (e: SyntheticEvent) => void,
+	children?: React.ReactNode
 }) {
 	return <>
 		<div className="h-noteCardHeight flex flex-col items-center justify-center gap-6 rounded-lg border-2 border-primary border-dashed p-4 shadow-md select-none
@@ -11,7 +12,7 @@ export default function CreateNoteCard({onClick: onClickHandler}: {
 		" onClick={onClickHandler}>
 			<AddIcon className="text-primary text-4xl mr-2 border-primary border rounded-full" />
 			<p className="text-primary">
-				Create Note
+				{children}
 			</p>
 		</div>
 	</>

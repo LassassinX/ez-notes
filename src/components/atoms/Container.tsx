@@ -1,5 +1,3 @@
-import React from "react"
-
 export default function Container({className, children, style}:{
 	className?: string,
 	children?: React.ReactNode,
@@ -8,7 +6,7 @@ export default function Container({className, children, style}:{
 
 	return <>
 		<div className={`${className ?? ''} p-4 flex gap-4`} style={style}>
-			{children ?? ''}
+			{children}
 		</div>
 	</>
 }
