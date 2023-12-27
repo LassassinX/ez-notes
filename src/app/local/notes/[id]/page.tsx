@@ -6,6 +6,7 @@ import Loader from "@/components/atoms/MainPageLoader";
 import NoteWritingPage from "./components/NoteWritingPage";
 import { Note } from "@/utils/types";
 
+import NProgress from "nprogress";
 
 export default function Page({ params }: {
 	params: {
@@ -22,6 +23,8 @@ export default function Page({ params }: {
 			const note = notes.find((note: any) => note.id === id) || false
 
 			setNote(note);
+
+			NProgress.done()
 		} else {
 			setNote(false);
 		}

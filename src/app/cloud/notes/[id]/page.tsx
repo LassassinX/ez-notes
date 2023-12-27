@@ -8,6 +8,7 @@ import Loader from "@/components/atoms/MainPageLoader";
 import NoteWritingPage from "./components/NoteWritingPage";
 import { Note } from "@/utils/types";
 
+import NProgress from "nprogress";
 
 export default function Page({ params }: {
 	params: {
@@ -28,6 +29,7 @@ export default function Page({ params }: {
 			return;
 		}
 
+		NProgress.done()
 		setNote(data.note);
 	}
 

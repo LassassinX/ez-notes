@@ -9,6 +9,7 @@ import Link from "next/link"
 import { useState, useRef, useEffect } from "react"
 import { Note } from "@/utils/types";
 import { useSession } from "next-auth/react";
+import toast from "react-hot-toast";
 
 export default function NoteTitle({ note, setNote }: {
 	note: Note,
@@ -42,7 +43,8 @@ export default function NoteTitle({ note, setNote }: {
 			console.error(data.error)
 			return
 		}
-
+		
+		toast.success('Saved')
 		setNote({
 			...note,
 			title: noteTitle

@@ -11,6 +11,7 @@ import CreateNoteCard from '@/components/templates/CreateNoteCard'
 import { Note } from '@/utils/types'
 import ComponentLoader from '@/components/atoms/ComponentLoader'
 import Notes from './Notes'
+import NProgress from 'nprogress'
 
 export default function CloudNotesContainer() {
 	const [notes, setNotes] = useState(undefined as Note[] | undefined)
@@ -47,13 +48,14 @@ export default function CloudNotesContainer() {
 		// update the state
 		setNotes([...notes, newNote])
 
-		
-
+		NProgress.start()
 		// redirect to the new note
 		push(`/cloud/notes/${newNote.id}`)
 	}
 
 	const handleNoteOnClick = (id: string) => {
+		NProgress.start()
+		
 		push(`/cloud/notes/${id}`)
 	}
 
@@ -62,12 +64,13 @@ export default function CloudNotesContainer() {
 		if (notes === undefined) return
 
 		const newNotes = notes.filter((note: any) => note.id !== id)
-
+		NProgress.start()
 		// add note to db
 		await fetch(`/api/users/${session?.user?.id}/notes/${id}`, {
 			method: 'DELETE',
 		})
 
+		NProgress.done()
 		// update the state 
 		setNotes(newNotes)
 	}
@@ -80,7 +83,7 @@ export default function CloudNotesContainer() {
 				<CreateNoteCard onClick={handleNoteCreate}>Create Cloud Note</CreateNoteCard>
 				{
 					notes === undefined ? <div className='flex items-center justify-center'><ComponentLoader /></div> :
-					<Notes handleNoteDelete={handleNoteDelete} handleNoteOnClick={handleNoteOnClick} notes={notes} />
+					<Notes handleNoteDelete={handleNoteDelete} handleNoteOnClick={handleNoteOnClick} routePrefix="/cloud" notes={notes} />
 				}
 			</Container>
 		</>

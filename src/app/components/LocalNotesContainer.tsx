@@ -10,8 +10,10 @@ import { getRandomColor } from '@/utils/colors'
 import { deleteNoteFromLocalStorage } from '@/utils/functions'
 import ComponentLoader from '@/components/atoms/ComponentLoader'
 
-import LocalNotes from './Notes'
+import Notes from './Notes'
 import { Note } from '@/utils/types'
+
+import NProgress from 'nprogress'
 
 
 export default function LocalNotesContainer() {
@@ -47,6 +49,7 @@ export default function LocalNotesContainer() {
 		// update the local storage
 		localStorage.setItem('notes', JSON.stringify([newNote, ...notes]))
 
+		NProgress.start()
 		// redirect to the new note
 		push(`/local/notes/${newNote.id}`)
 	}
@@ -55,15 +58,19 @@ export default function LocalNotesContainer() {
 		// delete the note
 		const newNotes = notes.filter((note: any) => note.id !== id)
 
+		NProgress.start()
 		// update the local storage
 		deleteNoteFromLocalStorage(id)
+		NProgress.done()
 
 		// update the state 
 		setNotes(newNotes)
+
 	}
 
 	const handleNoteOnClick = (id: string) => {
-		// redirect to the note
+		// redirect to the note.
+		NProgress.start()
 		push(`/local/notes/${id}`)
 	}
 
@@ -74,7 +81,7 @@ export default function LocalNotesContainer() {
 		<Container className='grid grid-cols-[repeat(auto-fill,minmax(180px,1fr))] !p-0'>
 			<CreateNoteCard onClick={handleNoteCreate}>Create Local Note</CreateNoteCard>
 			{
-				notes === undefined ? <div className='self-center mx-auto'><ComponentLoader /></div> : <LocalNotes notes={notes} handleNoteDelete={handleNoteDelete} handleNoteOnClick={handleNoteOnClick} />
+				notes === undefined ? <div className='self-center mx-auto'><ComponentLoader /></div> : <Notes notes={notes} handleNoteDelete={handleNoteDelete} handleNoteOnClick={handleNoteOnClick} routePrefix='/local' />
 			}
 
 		</Container>

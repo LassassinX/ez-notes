@@ -15,7 +15,7 @@ export default function Home() {
 	}
 
 	return (
-		<Container className='flex flex-col gap-2'>
+		<Container className={`flex flex-col gap-2 transition-all`}>
 			<CloudNotesContainer />
 			<LocalNotesContainer />
 		</Container>

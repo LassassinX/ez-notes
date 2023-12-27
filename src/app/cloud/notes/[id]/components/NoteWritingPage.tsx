@@ -69,7 +69,7 @@ export default function NoteWritingPage({ note, setNote }: {
 				}
 			</button>
 		</Container>
-		<NoteWritingBoard note={note} editDivRef={editDivRef}/>
+		<NoteWritingBoard note={note} editDivRef={editDivRef} updateNoteHandler = {updateNote}/>
 	</Container>
 	</>
 	
