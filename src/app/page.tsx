@@ -53,7 +53,7 @@ export default function Home() {
 					</div>
 					<div className="modal-action flex flex-col items-center">
 						<form method="dialog">
-							<button className="btn">Let's make a note!</button>
+							<button className="btn">Let&apos;s make a note!</button>
 						</form>
 					</div>
 				</div>
