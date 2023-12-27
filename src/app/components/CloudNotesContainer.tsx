@@ -39,6 +39,8 @@ export default function CloudNotesContainer() {
 			color: getRandomColor()
 		}
 
+		NProgress.start()
+
 		// add note to db
 		await fetch(`/api/users/${session?.user?.id}/notes`, {
 			method: 'POST',
@@ -48,7 +50,6 @@ export default function CloudNotesContainer() {
 		// update the state
 		setNotes([...notes, newNote])
 
-		NProgress.start()
 		// redirect to the new note
 		push(`/cloud/notes/${newNote.id}`)
 	}
